@@ -70,7 +70,24 @@
 | 参数 | 值 | 备注 |
 |------|------|------|
 | HALL_ANGLE_OFFSET | 0（待标定） | 16 位角制，≈182/1° |
-| 其他 | | |
+| UBASE | 179 | 功率计算电压基准（仅 main.c 功率观测用） |
+| IBASE | 25 | 电流码值基准：声明 ADC 半量程(2048 LSB)=12.5A，**待实测核对** |
+
+### 标定链路结论（代码核实，2026-09）
+
+- **UBASE/IBASE 全工程唯一使用点是 main.c 功率观测 `foc.power` 计算**。
+  电流环/速度环/功率环输出、过流保护(MAX_I_PHASE)、限流(MAX_IQ)、MTPA
+  全部工作在码值域，不经过这两个宏换算——改它们不影响任何控制行为，
+  只改变 `foc.power` 的"码值/瓦"比例（∝ UBASE×IBASE）。
+- ADC→电流码值换算写死在 main.c：`code=(offset-adc12)<<3`，
+  故"码值=A×32768/IBASE"成立的**前提是 IBASE 匹配硬件模拟前端量程**
+  （分流电阻×运放增益×Vref），不是自由单位。
+- 以瓦为单位的量随 UBASE/IBASE 标定走：main.c `foc.power<30` 退磁阈值
+  （25W×1.2）、功率环 POWER_KP/KI、target_power、65535 饱和。
+  POWER_HIGH/POWER_LOW 已定义但无使用点；功率环当前未启用（target_power 赋值被注释）。
+- MAX_IQ=524(0.4A)、MAX_I_PHASE=655(0.5A) 按 IBASE=25 推得（524=0.4×32768/25），已配套。
+- 待办：注入已知电流核对 IBASE=25 的硬件量程声明；功率计实测校核 UBASE=179 下
+  foc.power 读数是否为真实瓦特。
 
 ## 7. 实测波形特征（VOFA：ch1=hallValue, ch2=hallTheta24 阶梯, ch3=插补角）
 
