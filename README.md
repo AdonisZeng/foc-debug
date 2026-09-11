@@ -17,7 +17,10 @@ foc-debug/
 │   └── motor-profiles/               # 电机实例档案：按具体电机记录
 │       ├── template.md               #   档案模板
 │       ├── vacuum-motor.md           #   吸尘器电机（一对极，带风机叶片）
-│       └── hobby-motor.md            #   航模电机（低电感，空载）
+│       ├── hobby-motor.md            #   航模电机（低电感，空载）
+│       ├── fan-motor.md              #   36V 风机电机（五对极，大惯量扇叶，无感）
+│       ├── hv-fan-motor.md           #   高压风扇电机（25W 旧电机，RY7212 霍尔平台）
+│       └── pm5408-motor.md           #   PEMS PM5408（75W 新电机，RY7212 霍尔平台，适配中）
 ├── LICENSE
 └── README.md
 ```
