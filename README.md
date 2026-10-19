@@ -13,7 +13,11 @@ foc-debug/
 │   │   ├── observer-lock.md          #   观测器锁定（SMO/PLL）
 │   │   ├── speed-loop.md             #   速度环（转速控制/转速限制）
 │   │   ├── current-loop.md           #   电流环
-│   │   └── sampling-modulation.md    #   采样与调制（死区/管压降）
+│   │   ├── sampling-modulation.md    #   采样与调制（死区/管压降）
+│   │   ├── field-weakening.md        #   弱磁（转速被母线电压封顶）
+│   │   ├── hall-sensor.md            #   霍尔传感（布局识别/查表/插补/停转/判向）
+│   │   ├── instrumentation.md        #   测量与插桩（IO 翻转测时、复用脚、中断抢占）
+│   │   └── code-pitfalls.md          #   代码类坑（计数器回绕等）
 │   └── motor-profiles/               # 电机实例档案：按具体电机记录
 │       ├── template.md               #   档案模板
 │       ├── vacuum-motor.md           #   吸尘器电机（一对极，带风机叶片）
