@@ -17,6 +17,7 @@ foc-debug/
 │   │   ├── field-weakening.md        #   弱磁（转速被母线电压封顶）
 │   │   ├── hall-sensor.md            #   霍尔传感（布局识别/查表/插补/停转/判向）
 │   │   ├── instrumentation.md        #   测量与插桩（IO 翻转测时、复用脚、中断抢占）
+│   │   ├── fault-handling.md          #   故障处理与状态机事务（诊断码仲裁、恢复放行、开波竞态、重启计时）
 │   │   └── code-pitfalls.md          #   代码类坑（计数器回绕等）
 │   └── motor-profiles/               # 电机实例档案：按具体电机记录
 │       ├── template.md               #   档案模板
@@ -24,6 +25,7 @@ foc-debug/
 │       ├── hobby-motor.md            #   航模电机（低电感，空载）
 │       ├── fan-motor.md              #   36V 风机电机（五对极，大惯量扇叶，无感）
 │       ├── hv-fan-motor.md           #   高压风扇电机（25W 旧电机，RY7212 霍尔平台）
+│       ├── diman-25w-fan-motor.md     #   DIMAN 25W 风机（1600rpm，霍尔 60°布局，含故障链重构经验）
 │       └── pm5408-motor.md           #   PEMS PM5408（75W 新电机，RY7212 霍尔平台，适配中）
 ├── LICENSE
 └── README.md
